@@ -19,16 +19,7 @@ const Navbar = () => {
   if (!userData?.username) {
     return (
       <div id="navbar">
-        <Link id="link" style={{ textDecoration: "none" }} to="/">
-          <img
-            id="logo"
-            className="image"
-            src={logo}
-            alt="logo"
-            height="15%"
-            width="15%"
-          />
-        </Link>
+        <Link id="link" style={{ textDecoration: "none" }} to="/"></Link>
         <Link id="link" to="/login">
           <h3 id="loginLink">Login</h3>
         </Link>
