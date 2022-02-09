@@ -6,6 +6,13 @@ const calendarSchema = new Schema(
       type: String,
       required: true,
     },
+    days: [String],
+    months: [String],
+    currentYear: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
   },
   {
     toJSON: {
@@ -14,6 +21,10 @@ const calendarSchema = new Schema(
   }
 );
 
-const User = model("Calendar", calendarSchema);
+const Calendar = model("Calendar", calendarSchema);
+
+userSchema.virtual("monthCount").get(function () {
+  return this.months.length;
+});
 
 module.exports = Calendar;
