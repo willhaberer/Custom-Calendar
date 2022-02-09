@@ -1,4 +1,4 @@
-const { Schema } = require("mongoose");
+const { Schema, model } = require("mongoose");
 
 const calendarSchema = new Schema(
   {
@@ -21,10 +21,10 @@ const calendarSchema = new Schema(
   }
 );
 
-const Calendar = model("Calendar", calendarSchema);
-
-userSchema.virtual("monthCount").get(function () {
+calendarSchema.virtual("monthCount").get(function () {
   return this.months.length;
 });
+
+const Calendar = model("Calendar", calendarSchema);
 
 module.exports = Calendar;
