@@ -26,6 +26,9 @@ const Navbar = () => {
         <Link id="link" to="/create">
           <h3 id="createLink">Create</h3>
         </Link>
+        <Link id="link" to="/profile">
+          <h3 id="createLink">Profile</h3>
+        </Link>
       </div>
     );
   }
@@ -36,6 +39,12 @@ const Navbar = () => {
         <h3 id="logout" onClick={logoutUser}>
           Logout
         </h3>
+        <Link id="link" to="/create">
+          <h3 id="createLink">Create</h3>
+        </Link>
+        <Link id="link" to="/profile">
+          <h3 id="createLink">Profile</h3>
+        </Link>
       </a>
     </div>
   );
