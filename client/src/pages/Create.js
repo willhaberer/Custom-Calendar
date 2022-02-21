@@ -11,7 +11,19 @@ function Create() {
 
   const [arr, setArr] = useState(inputArr);
 
-  const addInput = () => {
+  const addMonthInput = () => {
+    setArr((s) => {
+      return [
+        ...s,
+        {
+          type: "text",
+          value: "",
+        },
+      ];
+    });
+  };
+
+  const addDayInput = () => {
     setArr((s) => {
       return [
         ...s,
@@ -47,20 +59,38 @@ function Create() {
 
   return (
     <div>
-      {arr.map((item, i) => {
+      <h4>Enter your Months</h4>
+      {arr.map((month, m) => {
         return (
           <form>
             <input
               onChange={handleChange}
-              value={item.value}
-              id={i}
-              type={item.type}
+              value={month.value}
+              id={m}
+              type={month.type}
               size="40"
             />
           </form>
         );
       })}
-      <button onClick={addInput}>Add Another</button>
+      <button onClick={addMonthInput}>Add Another Month</button>
+      <h4>Enter your Days</h4>
+      {arr.map((day, d) => {
+        return (
+          <form>
+            <input
+              onChange={handleChange}
+              value={day.value}
+              id={d}
+              type={day.type}
+              size="40"
+            />
+          </form>
+        );
+      })}
+      <button onClick={addDayInput}>Add Another Day</button>
+      <br></br>
+      <br></br>
       <button id="btn" type="button" onClick={handleFormSubmit}>
         Submit
       </button>
