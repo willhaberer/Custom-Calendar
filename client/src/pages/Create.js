@@ -66,7 +66,7 @@ function Create() {
     try {
       console.log("handle form submit");
     } catch (e) {
-      console.error(e);
+      //   console.error(e);
     }
   };
 

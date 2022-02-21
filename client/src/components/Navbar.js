@@ -32,7 +32,7 @@ const Navbar = () => {
 
   return (
     <div id="navbar">
-      <a>
+      <a href="/">
         <h3 id="logout" onClick={logoutUser}>
           Logout
         </h3>
