@@ -1,10 +1,19 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
+  type Calendar {
+    _id: ID
+    name: String
+    days: [String]
+    months: [String]
+    currentYear: Int
+  }
+
   type User {
     _id: ID
     username: String
     email: String
+    calendarList: [Calendar]
   }
 
   type Auth {

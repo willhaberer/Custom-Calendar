@@ -1,30 +1,19 @@
 const { Schema, model } = require("mongoose");
 
-const calendarSchema = new Schema(
-  {
-    name: {
-      type: String,
-      required: true,
-    },
-    days: [String],
-    months: [String],
-    currentYear: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
+const calendarSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
   },
-  {
-    toJSON: {
-      virtuals: true,
-    },
-  }
-);
-
-calendarSchema.virtual("monthCount").get(function () {
-  return this.months.length;
+  days: [String],
+  months: [String],
+  currentYear: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
 });
 
-const Calendar = model("Calendar", calendarSchema);
+// const Calendar = model("Calendar", calendarSchema);
 
-module.exports = Calendar;
+module.exports = calendarSchema;
