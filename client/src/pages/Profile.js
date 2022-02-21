@@ -35,7 +35,7 @@ const Profile = () => {
           variables: { userId },
         });
         console.log(data);
-        alert("We Are Sory To See You Go");
+        alert("We Are Sorry To See You Go");
         window.location.reload();
       } catch (err) {
         console.error(err);
