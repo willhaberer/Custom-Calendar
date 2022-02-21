@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Create() {
+const Create = () => {
   const inputArr = [
     {
       type: "text",
@@ -109,6 +109,6 @@ function Create() {
       </button>
     </div>
   );
-}
+};
 
 export default Create;
