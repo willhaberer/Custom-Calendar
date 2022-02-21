@@ -43,10 +43,9 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-//later make this calendar count
-// userSchema.virtual("spotifySongCount").get(function () {
-//   return this.savedSpotifySongs.length;
-// });
+userSchema.virtual("calendarCount").get(function () {
+  return this.calendarList.length;
+});
 
 const User = model("User", userSchema);
 
