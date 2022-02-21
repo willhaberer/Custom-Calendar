@@ -1,6 +1,8 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 
+const calendarSchema = require("./Calendar");
+
 const userSchema = new Schema(
   {
     username: {
@@ -18,6 +20,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    calendarList: [calendarSchema],
   },
 
   {
