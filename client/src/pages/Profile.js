@@ -43,6 +43,14 @@ const Profile = () => {
     }
   };
 
+  if (!userData?.username) {
+    return (
+      <div id="profilePage">
+        <h1 id="welcome">You must be logged in to view the profile page</h1>
+      </div>
+    );
+  }
+
   return (
     <div id="mainContainer">
       <h1>Profile</h1>
