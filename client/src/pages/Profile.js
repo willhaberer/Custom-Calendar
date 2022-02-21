@@ -1,4 +1,11 @@
-import React from "react";
+import { useQuery, useMutation } from "@apollo/react-hooks";
+
+import { GET_ME } from "../utils/queries";
+import { REMOVE_USER } from "../utils/mutations";
+
+import Auth from "../utils/auth";
+
+import "../styles/Profile.css";
 
 function Profile() {
   return (
