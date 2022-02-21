@@ -1,9 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Create() {
+  const inputArr = [
+    {
+      type: "text",
+      id: 1,
+      value: "",
+    },
+  ];
+
+  const [arr, setArr] = useState(inputArr);
+
+  const addInput = () => {
+    setArr((s) => {
+      return [
+        ...s,
+        {
+          type: "text",
+          value: "",
+        },
+      ];
+    });
+  };
+
+  const handleChange = (e) => {
+    e.preventDefault();
+
+    const index = e.target.id;
+    setArr((s) => {
+      const newArr = s.slice();
+      newArr[index].value = e.target.value;
+
+      return newArr;
+    });
+  };
+
   return (
-    <div id="mainContainer">
-      <h1>Create a New Calendar</h1>
+    <div>
+      <button onClick={addInput}>+</button>
+      {arr.map((item, i) => {
+        return (
+          <input
+            onChange={handleChange}
+            value={item.value}
+            id={i}
+            type={item.type}
+            size="40"
+          />
+        );
+      })}
     </div>
   );
 }
