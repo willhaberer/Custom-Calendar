@@ -23,6 +23,9 @@ const Navbar = () => {
         <Link id="link" to="/login">
           <h3 id="loginLink">Login</h3>
         </Link>
+        <Link id="link" to="/create">
+          <h3 id="createLink">Create</h3>
+        </Link>
       </div>
     );
   }
