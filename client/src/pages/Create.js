@@ -35,20 +35,35 @@ function Create() {
     });
   };
 
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      console.log("handle form submit");
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
     <div>
-      <button onClick={addInput}>+</button>
       {arr.map((item, i) => {
         return (
-          <input
-            onChange={handleChange}
-            value={item.value}
-            id={i}
-            type={item.type}
-            size="40"
-          />
+          <form>
+            <input
+              onChange={handleChange}
+              value={item.value}
+              id={i}
+              type={item.type}
+              size="40"
+            />
+          </form>
         );
       })}
+      <button onClick={addInput}>Add Another</button>
+      <button id="btn" type="button" onClick={handleFormSubmit}>
+        Submit
+      </button>
     </div>
   );
 }
