@@ -61,6 +61,16 @@ const Create = () => {
     });
   };
 
+  const handleMonthSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      setCreationIndex("Day");
+    } catch (e) {
+      //   console.error(e);
+    }
+  };
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -91,7 +101,7 @@ const Create = () => {
         <button onClick={addMonthInput}>Add Another Month</button>
         <br></br>
         <br></br>
-        <button id="btn" type="button" onClick={handleFormSubmit}>
+        <button id="btn" type="button" onClick={handleMonthSubmit}>
           Next
         </button>
       </div>
