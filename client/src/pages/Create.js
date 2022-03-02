@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const Create = () => {
   const [currentYear, setCurrentYear] = useState(0);
+  const [calendarName, setCalendarName] = useState("Name");
 
   const inputMonthArr = [
     {
@@ -21,7 +22,7 @@ const Create = () => {
 
   const [monthArr, setMonthArr] = useState(inputMonthArr);
   const [dayArr, setDayArr] = useState(inputDayArr);
-  const [creationIndex, setCreationIndex] = useState("Month");
+  const [creationIndex, setCreationIndex] = useState("Name");
 
   const addMonthInput = () => {
     setMonthArr((s) => {
@@ -52,6 +53,11 @@ const Create = () => {
     setCurrentYear(event.target.value);
   };
 
+  const handleNameChange = (event) => {
+    event.preventDefault();
+    setCalendarName(event.target.value);
+  };
+
   const handleMonthChange = (e) => {
     e.preventDefault();
 
@@ -76,6 +82,12 @@ const Create = () => {
     });
   };
 
+  const [formState, setFormState] = useState({
+    name: "",
+
+    currentYear: 0,
+  });
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -92,12 +104,14 @@ const Create = () => {
     event.preventDefault();
 
     try {
-      if (creationIndex === "Day") {
-        setCreationIndex("Month");
-      } else if (creationIndex === "Year") {
+      if (creationIndex === "Year") {
         setCreationIndex("Day");
-      } else {
+      } else if (creationIndex === "Day") {
         setCreationIndex("Month");
+      } else if (creationIndex === "Month") {
+        setCreationIndex("Name");
+      } else {
+        setCreationIndex("Name");
       }
     } catch (e) {
       //   console.error(e);
@@ -108,7 +122,9 @@ const Create = () => {
     event.preventDefault();
 
     try {
-      if (creationIndex === "Month") {
+      if (creationIndex === "Name") {
+        setCreationIndex("Month");
+      } else if (creationIndex === "Month") {
         setCreationIndex("Day");
       } else if (creationIndex === "Day") {
         setCreationIndex("Year");
@@ -120,7 +136,28 @@ const Create = () => {
     }
   };
 
-  if (creationIndex === "Month") {
+  if (creationIndex === "Name") {
+    return (
+      <div>
+        <h4>Enter your Calendar's Name</h4>
+        <form>
+          <input
+            value={calendarName}
+            name="calendarName"
+            onChange={handleNameChange}
+            type="name"
+            placeholder="Calendar Name"
+            id="calendarName"
+          />
+        </form>
+        <br></br>
+        <br></br>
+        <button id="btn" type="button" onClick={handleNext}>
+          Next
+        </button>
+      </div>
+    );
+  } else if (creationIndex === "Month") {
     return (
       <div>
         <h4>Enter your Months</h4>
@@ -140,6 +177,9 @@ const Create = () => {
         <button onClick={addMonthInput}>Add Another Month</button>
         <br></br>
         <br></br>
+        <button id="btn" type="button" onClick={handleGoBack}>
+          Back
+        </button>
         <button id="btn" type="button" onClick={handleNext}>
           Next
         </button>
