@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 
 const Create = () => {
-  const [formState, setFormState] = useState({
-    currentYear: 0,
-  });
+  const [currentYear, setCurrentYear] = useState(0);
 
   const inputMonthArr = [
     {
@@ -50,12 +48,8 @@ const Create = () => {
   };
 
   const handleYearChange = (event) => {
-    const { name, value } = event.target;
-
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
+    event.preventDefault();
+    setCurrentYear(event.target.value);
   };
 
   const handleMonthChange = (e) => {
@@ -88,6 +82,7 @@ const Create = () => {
     try {
       console.log(monthArr);
       console.log(dayArr);
+      console.log(currentYear);
     } catch (e) {
       //   console.error(e);
     }
@@ -184,11 +179,12 @@ const Create = () => {
         <h4>Enter your Current Year</h4>
         <form>
           <input
-            value={formState.currentYear}
+            value={currentYear}
             name="currentYear"
             onChange={handleYearChange}
             type="year"
             placeholder="Year"
+            id="year"
           />
         </form>
         <br></br>
