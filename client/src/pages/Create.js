@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 
 const Create = () => {
-  const inputArr = [
+  const [formState, setFormState] = useState({
+    currentYear: 0,
+  });
+
+  const inputMonthArr = [
     {
       type: "text",
       id: 1,
@@ -9,8 +13,16 @@ const Create = () => {
     },
   ];
 
-  const [monthArr, setMonthArr] = useState(inputArr);
-  const [dayArr, setDayArr] = useState(inputArr);
+  const inputDayArr = [
+    {
+      type: "text",
+      id: 1,
+      value: "",
+    },
+  ];
+
+  const [monthArr, setMonthArr] = useState(inputMonthArr);
+  const [dayArr, setDayArr] = useState(inputDayArr);
   const [creationIndex, setCreationIndex] = useState("Month");
 
   const addMonthInput = () => {
@@ -34,6 +46,15 @@ const Create = () => {
           value: "",
         },
       ];
+    });
+  };
+
+  const handleYearChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
     });
   };
 
@@ -61,21 +82,44 @@ const Create = () => {
     });
   };
 
-  const handleMonthSubmit = async (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      setCreationIndex("Day");
+      console.log(monthArr);
+      console.log(dayArr);
     } catch (e) {
       //   console.error(e);
     }
   };
 
-  const handleFormSubmit = async (event) => {
+  const handleGoBack = async (event) => {
     event.preventDefault();
 
     try {
-      console.log("handle form submit");
+      if (creationIndex === "Day") {
+        setCreationIndex("Month");
+      } else if (creationIndex === "Year") {
+        setCreationIndex("Day");
+      } else {
+        setCreationIndex("Month");
+      }
+    } catch (e) {
+      //   console.error(e);
+    }
+  };
+
+  const handleNext = async (event) => {
+    event.preventDefault();
+
+    try {
+      if (creationIndex === "Month") {
+        setCreationIndex("Day");
+      } else if (creationIndex === "Day") {
+        setCreationIndex("Year");
+      } else {
+        setCreationIndex("Year");
+      }
     } catch (e) {
       //   console.error(e);
     }
@@ -101,7 +145,7 @@ const Create = () => {
         <button onClick={addMonthInput}>Add Another Month</button>
         <br></br>
         <br></br>
-        <button id="btn" type="button" onClick={handleMonthSubmit}>
+        <button id="btn" type="button" onClick={handleNext}>
           Next
         </button>
       </div>
@@ -126,6 +170,32 @@ const Create = () => {
         <button onClick={addDayInput}>Add Another Day</button>
         <br></br>
         <br></br>
+        <button id="btn" type="button" onClick={handleGoBack}>
+          Back
+        </button>
+        <button id="btn" type="button" onClick={handleNext}>
+          Next
+        </button>
+      </div>
+    );
+  } else if (creationIndex === "Year") {
+    return (
+      <div>
+        <h4>Enter your Current Year</h4>
+        <form>
+          <input
+            value={formState.currentYear}
+            name="currentYear"
+            onChange={handleYearChange}
+            type="year"
+            placeholder="Year"
+          />
+        </form>
+        <br></br>
+        <br></br>
+        <button id="btn" type="button" onClick={handleGoBack}>
+          Back
+        </button>
         <button id="btn" type="button" onClick={handleFormSubmit}>
           Submit
         </button>
