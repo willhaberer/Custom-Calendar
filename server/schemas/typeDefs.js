@@ -31,6 +31,12 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     removeUser(userId: String!): User
+    addCalendar(
+      name: String!
+      days: [String]!
+      months: [String]!
+      currentYear: Int!
+    ): Calendar
   }
 `;
 

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { ADD_CALENDAR } from "../utils/mutations";
 
 const Create = () => {
   const [currentYear, setCurrentYear] = useState(0);
   const [calendarName, setCalendarName] = useState("Name");
-
+  const [addCalendar] = useMutation(ADD_CALENDAR);
   const inputMonthArr = [
     {
       type: "text",
@@ -84,21 +86,10 @@ const Create = () => {
 
   const [formState, setFormState] = useState({
     name: "",
-
+    days: [],
+    months: [],
     currentYear: 0,
   });
-
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-
-    try {
-      console.log(monthArr);
-      console.log(dayArr);
-      console.log(currentYear);
-    } catch (e) {
-      //   console.error(e);
-    }
-  };
 
   const handleGoBack = async (event) => {
     event.preventDefault();
@@ -133,6 +124,29 @@ const Create = () => {
       }
     } catch (e) {
       //   console.error(e);
+    }
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      console.log(monthArr);
+      console.log(dayArr);
+      console.log(currentYear);
+      setFormState({
+        name: calendarName,
+        days: dayArr,
+        months: monthArr,
+        currentYear: currentYear,
+      });
+      const userInput = formState;
+      const { data } = await addCalendar({
+        variables: { ...userInput },
+      });
+      console.log(data);
+    } catch (e) {
+      console.error(e);
     }
   };
 

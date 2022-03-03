@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, Calendar } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 
@@ -44,6 +44,11 @@ const resolvers = {
       }
       const token = signToken(user);
       return { token, user };
+    },
+
+    addCalendar: async (parent, args) => {
+      const calendar = await Calendar.create(args);
+      return calendar;
     },
   },
 };
