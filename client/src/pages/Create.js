@@ -131,16 +131,18 @@ const Create = () => {
     event.preventDefault();
 
     try {
-      console.log(monthArr);
-      console.log(dayArr);
-      console.log(currentYear);
-      setFormState({
-        name: calendarName,
-        days: dayArr,
-        months: monthArr,
-        currentYear: currentYear,
-      });
-      const userInput = formState;
+      const monthMap = monthArr.map((x) => x.value);
+      const dayMap = dayArr.map((x) => x.value);
+      const calName = calendarName;
+      const setYear = parseInt(currentYear);
+
+      const userInput = {
+        name: calName,
+        days: dayMap,
+        months: monthMap,
+        currentYear: setYear,
+      };
+      console.log(userInput);
       const { data } = await addCalendar({
         variables: { ...userInput },
       });
