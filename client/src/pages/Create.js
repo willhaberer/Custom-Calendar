@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import { useMutation } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
+import { GET_ME } from "../utils/queries";
 import { ADD_CALENDAR } from "../utils/mutations";
+
+import Auth from "../utils/auth";
 
 const Create = () => {
   const [currentYear, setCurrentYear] = useState(0);
   const [calendarName, setCalendarName] = useState("Name");
+  const { data } = useQuery(GET_ME);
   const [addCalendar] = useMutation(ADD_CALENDAR);
   const inputMonthArr = [
     {
@@ -13,6 +17,8 @@ const Create = () => {
       value: "",
     },
   ];
+
+  const userData = data?.me || {};
 
   const inputDayArr = [
     {
@@ -143,7 +149,7 @@ const Create = () => {
         currentYear: setYear,
       };
       console.log(userInput);
-      const { data } = await addCalendar({
+      const data = await addCalendar({
         variables: { ...userInput },
       });
       console.log(data);
@@ -151,6 +157,14 @@ const Create = () => {
       console.error(e);
     }
   };
+
+  if (!userData?.username) {
+    return (
+      <div id="profilePage">
+        <h1 id="welcome">You must be logged in to Create a Calendar</h1>
+      </div>
+    );
+  }
 
   if (creationIndex === "Name") {
     return (
