@@ -150,7 +150,7 @@ const Create = () => {
       };
       console.log(userInput);
       const data = await addCalendar({
-        variables: { ...userInput },
+        variables: { calendar: userInput },
       });
       console.log(data);
     } catch (e) {

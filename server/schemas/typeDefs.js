@@ -27,16 +27,18 @@ const typeDefs = gql`
     me: User
   }
 
+  input CalendarInput {
+    name: String
+    days: [String]
+    months: [String]
+    currentYear: Int
+  }
+
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     removeUser(userId: String!): User
-    addCalendar(
-      name: String!
-      days: [String]!
-      months: [String]!
-      currentYear: Int!
-    ): Calendar
+    addCalendar(calendar: CalendarInput): User
   }
 `;
 

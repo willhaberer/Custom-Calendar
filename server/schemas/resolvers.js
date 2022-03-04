@@ -46,9 +46,16 @@ const resolvers = {
       return { token, user };
     },
 
-    addCalendar: async (parent, args) => {
-      const calendar = await Calendar.create(args);
-      return calendar;
+    addCalendar: async (parent, { calendar }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { calendarList: calendar } },
+          { new: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError("Something went Wrong!");
     },
   },
 };
