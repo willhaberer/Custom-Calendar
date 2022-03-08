@@ -10,6 +10,7 @@ const Create = () => {
   const [addCalendar] = useMutation(ADD_CALENDAR);
 
   const [currentYear, setCurrentYear] = useState(0);
+  const [daysInYear, setDaysInYear] = useState(1);
   const [calendarName, setCalendarName] = useState("Name");
 
   const inputMonthArr = [
@@ -81,6 +82,11 @@ const Create = () => {
   const handleYearChange = (event) => {
     event.preventDefault();
     setCurrentYear(event.target.value);
+  };
+
+  const handleDayInYearChange = (event) => {
+    event.preventDefault();
+    setDaysInYear(event.target.value);
   };
 
   const handleNameChange = (event) => {
@@ -308,6 +314,17 @@ const Create = () => {
           />
         </form>
         <br></br>
+        <h4>Enter how many days are in a year</h4>
+        <form>
+          <input
+            value={daysInYear}
+            name="currentYear"
+            onChange={handleDayInYearChange}
+            type="year"
+            placeholder="Days In Year"
+            id="daysInYear"
+          />
+        </form>
         <br></br>
         <button id="btn" type="button" onClick={handleGoBack}>
           Back
