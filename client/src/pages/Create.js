@@ -182,6 +182,7 @@ const Create = () => {
       const dayMap = dayArr.map((x) => x.value);
       const calName = calendarName;
       const setYear = parseInt(currentYear);
+      const setDayCount = parseInt(daysInYear);
 
       const userInput = {
         name: calName,
@@ -189,6 +190,7 @@ const Create = () => {
         months: monthMap,
         monthDayCount: monthCountMap,
         currentYear: setYear,
+        daysInYear: setDayCount,
       };
       console.log(userInput);
       const data = await addCalendar({
