@@ -55,6 +55,7 @@ const Profile = () => {
   return (
     <div id="mainContainer">
       <h1>Profile</h1>
+      <h1 id="welcome">Welcome Back {userData.username}!</h1>
       <button id="removeUser" onClick={handleRemoveUser}>
         Delete Your Account
       </button>

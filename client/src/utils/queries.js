@@ -6,7 +6,12 @@ export const GET_ME = gql`
       _id
       username
       email
-      calendarList
+      calendarList {
+        name
+        months
+        days
+        currentYear
+      }
     }
   }
 `;
