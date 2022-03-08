@@ -7,7 +7,7 @@ const calendarSchema = new Schema({
   },
   days: [String],
   months: [String],
-  monthDayCount: [Int],
+  monthDayCount: [Number],
   currentYear: {
     type: Number,
     required: true,

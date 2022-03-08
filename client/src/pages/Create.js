@@ -172,6 +172,7 @@ const Create = () => {
 
     try {
       const monthMap = monthArr.map((x) => x.value);
+      const monthCountMap = monthDayAmountArr.map((x) => parseInt(x));
       const dayMap = dayArr.map((x) => x.value);
       const calName = calendarName;
       const setYear = parseInt(currentYear);
@@ -180,6 +181,7 @@ const Create = () => {
         name: calName,
         days: dayMap,
         months: monthMap,
+        monthDayCount: monthCountMap,
         currentYear: setYear,
       };
       console.log(userInput);
