@@ -13,6 +13,11 @@ const calendarSchema = new Schema({
     required: true,
     default: 0,
   },
+  daysInYear: {
+    type: Number,
+    required: true,
+    default: 1,
+  },
 });
 
 // const Calendar = model("Calendar", calendarSchema);
