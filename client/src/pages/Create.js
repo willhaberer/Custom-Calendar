@@ -3,14 +3,24 @@ import { useQuery, useMutation } from "@apollo/client";
 import { GET_ME } from "../utils/queries";
 import { ADD_CALENDAR } from "../utils/mutations";
 
-import Auth from "../utils/auth";
+// import Auth from "../utils/auth";
 
 const Create = () => {
-  const [currentYear, setCurrentYear] = useState(0);
-  const [calendarName, setCalendarName] = useState("Name");
   const { data } = useQuery(GET_ME);
   const [addCalendar] = useMutation(ADD_CALENDAR);
+
+  const [currentYear, setCurrentYear] = useState(0);
+  const [calendarName, setCalendarName] = useState("Name");
+
   const inputMonthArr = [
+    {
+      type: "text",
+      id: 1,
+      value: "",
+    },
+  ];
+
+  const inputMonthDayAmountArr = [
     {
       type: "text",
       id: 1,
@@ -29,6 +39,9 @@ const Create = () => {
   ];
 
   const [monthArr, setMonthArr] = useState(inputMonthArr);
+  const [monthDayAmountArr, setMonthDayAmountArr] = useState(
+    inputMonthDayAmountArr
+  );
   const [dayArr, setDayArr] = useState(inputDayArr);
   const [creationIndex, setCreationIndex] = useState("Name");
 
@@ -36,6 +49,15 @@ const Create = () => {
     setMonthArr((s) => {
       return [
         ...s,
+        {
+          type: "text",
+          value: "",
+        },
+      ];
+    });
+    setMonthDayAmountArr((q) => {
+      return [
+        ...q,
         {
           type: "text",
           value: "",
@@ -78,6 +100,18 @@ const Create = () => {
     });
   };
 
+  const handleMonthDayAmountChange = (e) => {
+    e.preventDefault();
+
+    const index = e.target.id;
+    setMonthDayAmountArr((s) => {
+      const newArr = s.slice();
+      newArr[index].value = e.target.value;
+
+      return newArr;
+    });
+  };
+
   const handleDayChange = (e) => {
     e.preventDefault();
 
@@ -90,12 +124,12 @@ const Create = () => {
     });
   };
 
-  const [formState, setFormState] = useState({
-    name: "",
-    days: [],
-    months: [],
-    currentYear: 0,
-  });
+  // const [formState, setFormState] = useState({
+  //   name: "",
+  //   days: [],
+  //   months: [],
+  //   currentYear: 0,
+  // });
 
   const handleGoBack = async (event) => {
     event.preventDefault();
@@ -129,7 +163,7 @@ const Create = () => {
         setCreationIndex("Year");
       }
     } catch (e) {
-      //   console.error(e);
+      console.error(e);
     }
   };
 
@@ -199,6 +233,20 @@ const Create = () => {
                 value={month.value}
                 id={m}
                 type={month.type}
+                size="40"
+              />
+            </form>
+          );
+        })}
+        <h4>Enter How many days each month has</h4>
+        {monthDayAmountArr.map((monthDay, mD) => {
+          return (
+            <form>
+              <input
+                onChange={handleMonthDayAmountChange}
+                value={monthDay.value}
+                id={mD}
+                type={monthDay.type}
                 size="40"
               />
             </form>
