@@ -31,6 +31,7 @@ const typeDefs = gql`
     name: String
     days: [String]
     months: [String]
+    monthDayCount: [Int]
     currentYear: Int
   }
 
