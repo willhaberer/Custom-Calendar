@@ -12,6 +12,7 @@ const Profile = () => {
   const [removeUser] = useMutation(REMOVE_USER);
 
   const userData = data?.me || {};
+  console.log(userData);
 
   const handleRemoveUser = async () => {
     console.log(userData._id);
