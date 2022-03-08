@@ -7,6 +7,8 @@ const typeDefs = gql`
     days: [String]
     months: [String]
     currentYear: Int
+    daysInYear: Int
+    monthDayCount: [Int]
   }
 
   type User {

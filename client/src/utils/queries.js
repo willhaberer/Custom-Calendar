@@ -11,6 +11,8 @@ export const GET_ME = gql`
         months
         days
         currentYear
+        daysInYear
+        monthDayCount
       }
     }
   }
