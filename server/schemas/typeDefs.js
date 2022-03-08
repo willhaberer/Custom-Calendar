@@ -33,6 +33,7 @@ const typeDefs = gql`
     months: [String]
     monthDayCount: [Int]
     currentYear: Int
+    daysInYear: Int
   }
 
   type Mutation {
