@@ -337,16 +337,12 @@ const Create = () => {
     return (
       <div>
         <h4>Enter your starting date</h4>
-        <form>
-          <input
-            value={currentYear}
-            name="currentYear"
-            onChange={handleYearChange}
-            type="year"
-            placeholder="Year"
-            id="year"
-          />
-        </form>
+        <label htmlFor="startMonth">Choose your starting Month:</label>
+        <select name="startMonth" id="startMonth">
+          {monthArr.map((month, m) => {
+            return <option value={month.value}>{month.value}</option>;
+          })}
+        </select>
         <br></br>
         <br></br>
         <button id="btn" type="button" onClick={handleGoBack}>
