@@ -344,6 +344,12 @@ const Create = () => {
           })}
         </select>
         <br></br>
+        <label htmlFor="startDay">Choose your starting Day:</label>
+        <select name="startDay" id="startDay">
+          {dayArr.map((day, d) => {
+            return <option value={day.value}>{day.value}</option>;
+          })}
+        </select>
         <br></br>
         <button id="btn" type="button" onClick={handleGoBack}>
           Back
