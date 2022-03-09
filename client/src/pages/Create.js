@@ -130,18 +130,13 @@ const Create = () => {
     });
   };
 
-  // const [formState, setFormState] = useState({
-  //   name: "",
-  //   days: [],
-  //   months: [],
-  //   currentYear: 0,
-  // });
-
   const handleGoBack = async (event) => {
     event.preventDefault();
 
     try {
-      if (creationIndex === "Year") {
+      if (creationIndex === "startDate") {
+        setCreationIndex("Year");
+      } else if (creationIndex === "Year") {
         setCreationIndex("Day");
       } else if (creationIndex === "Day") {
         setCreationIndex("Month");
@@ -165,8 +160,10 @@ const Create = () => {
         setCreationIndex("Day");
       } else if (creationIndex === "Day") {
         setCreationIndex("Year");
+      } else if (creationIndex === "Year") {
+        setCreationIndex("startDate");
       } else {
-        setCreationIndex("Year");
+        setCreationIndex("startDate");
       }
     } catch (e) {
       console.error(e);
@@ -327,6 +324,30 @@ const Create = () => {
             id="daysInYear"
           />
         </form>
+        <br></br>
+        <button id="btn" type="button" onClick={handleGoBack}>
+          Back
+        </button>
+        <button id="btn" type="button" onClick={handleNext}>
+          Next
+        </button>
+      </div>
+    );
+  } else if (creationIndex === "startDate") {
+    return (
+      <div>
+        <h4>Enter your starting date</h4>
+        <form>
+          <input
+            value={currentYear}
+            name="currentYear"
+            onChange={handleYearChange}
+            type="year"
+            placeholder="Year"
+            id="year"
+          />
+        </form>
+        <br></br>
         <br></br>
         <button id="btn" type="button" onClick={handleGoBack}>
           Back
