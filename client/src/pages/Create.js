@@ -209,6 +209,8 @@ const Create = () => {
         monthDayCount: monthCountMap,
         currentYear: setYear,
         daysInYear: setDayCount,
+        dayIndex: dayIndex,
+        monthIndex: monthIndex,
       };
       console.log(userInput);
       const data = await addCalendar({
