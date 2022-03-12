@@ -64,6 +64,8 @@ export const ADD_CALENDAR = gql`
         months
         days
         currentYear
+        dayIndex
+        monthIndex
       }
     }
   }
