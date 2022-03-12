@@ -9,6 +9,8 @@ const typeDefs = gql`
     currentYear: Int
     daysInYear: Int
     monthDayCount: [Int]
+    dayIndex: Int
+    monthIndex: Int
   }
 
   type User {
@@ -36,6 +38,8 @@ const typeDefs = gql`
     monthDayCount: [Int]
     currentYear: Int
     daysInYear: Int
+    dayIndex: Int
+    monthIndex: Int
   }
 
   type Mutation {
