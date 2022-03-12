@@ -212,7 +212,7 @@ const Create = () => {
         dayIndex: dayIndex,
         monthIndex: monthIndex,
       };
-      console.log(userInput);
+
       const data = await addCalendar({
         variables: { calendar: userInput },
       });
