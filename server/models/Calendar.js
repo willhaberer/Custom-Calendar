@@ -38,6 +38,14 @@ const calendarSchema = new Schema(
   }
 );
 
+calendarSchema.virtual("currentDay").get(function () {
+  return this.days[dayIndex];
+});
+
+calendarSchema.virtual("currentMonth").get(function () {
+  return this.months[monthIndex];
+});
+
 // const Calendar = model("Calendar", calendarSchema);
 
 module.exports = calendarSchema;
