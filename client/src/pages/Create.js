@@ -79,6 +79,10 @@ const Create = () => {
     });
   };
 
+  const getMonthIndex = async (month) => {
+    return month;
+  };
+
   const handleYearChange = (event) => {
     event.preventDefault();
     setCurrentYear(event.target.value);
@@ -180,6 +184,8 @@ const Create = () => {
       const calName = calendarName;
       const setYear = parseInt(currentYear);
       const setDayCount = parseInt(daysInYear);
+      const monthIndex = await getMonthIndex(dayMap[0]);
+      console.log(monthIndex);
 
       const userInput = {
         name: calName,
