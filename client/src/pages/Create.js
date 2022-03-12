@@ -12,6 +12,8 @@ const Create = () => {
   const [currentYear, setCurrentYear] = useState(0);
   const [daysInYear, setDaysInYear] = useState(1);
   const [calendarName, setCalendarName] = useState("Name");
+  const [startMonth, setStartMonth] = useState("Month");
+  const [startDay, setStartDay] = useState("Day");
 
   const inputMonthArr = [
     {
@@ -79,8 +81,8 @@ const Create = () => {
     });
   };
 
-  const getMonthIndex = async (month) => {
-    return month;
+  const getIndex = async (x, xArray) => {
+    return x;
   };
 
   const handleYearChange = (event) => {
@@ -96,6 +98,16 @@ const Create = () => {
   const handleNameChange = (event) => {
     event.preventDefault();
     setCalendarName(event.target.value);
+  };
+
+  const handleMDropdownChange = (event) => {
+    event.preventDefault();
+    setStartMonth(event.target.value);
+  };
+
+  const handleDDropdownChange = (event) => {
+    event.preventDefault();
+    setStartDay(event.target.value);
   };
 
   const handleMonthChange = (e) => {
@@ -184,8 +196,11 @@ const Create = () => {
       const calName = calendarName;
       const setYear = parseInt(currentYear);
       const setDayCount = parseInt(daysInYear);
-      const monthIndex = await getMonthIndex(dayMap[0]);
+      const monthIndex = await getIndex(startMonth, monthArr);
+      const dayIndex = await getIndex(startDay, dayArr);
+
       console.log(monthIndex);
+      console.log(dayIndex);
 
       const userInput = {
         name: calName,
@@ -344,16 +359,28 @@ const Create = () => {
       <div>
         <h4>Enter your starting date</h4>
         <label htmlFor="startMonth">Choose your starting Month:</label>
-        <select name="startMonth" id="startMonth">
+        <select
+          name="startMonth"
+          id="startMonth"
+          onChange={handleMDropdownChange}
+        >
           {monthArr.map((month, m) => {
-            return <option value={month.value}>{month.value}</option>;
+            return (
+              <option value={month.value} id={m} type={month.type}>
+                {month.value}
+              </option>
+            );
           })}
         </select>
         <br></br>
         <label htmlFor="startDay">Choose your starting Day:</label>
-        <select name="startDay" id="startDay">
+        <select name="startDay" id="startDay" onChange={handleDDropdownChange}>
           {dayArr.map((day, d) => {
-            return <option value={day.value}>{day.value}</option>;
+            return (
+              <option value={day.value} id={d} type={day.type}>
+                {day.value}
+              </option>
+            );
           })}
         </select>
         <br></br>
