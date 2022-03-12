@@ -90,11 +90,6 @@ const Create = () => {
     setCurrentYear(event.target.value);
   };
 
-  const handleDayInYearChange = (event) => {
-    event.preventDefault();
-    setDaysInYear(event.target.value);
-  };
-
   const handleNameChange = (event) => {
     event.preventDefault();
     setCalendarName(event.target.value);
@@ -195,12 +190,13 @@ const Create = () => {
       const dayMap = dayArr.map((x) => x.value);
       const calName = calendarName;
       const setYear = parseInt(currentYear);
-      const setDayCount = parseInt(daysInYear);
+      const setDayCount = monthCountMap.reduce(
+        (partialSum, a) => partialSum + a,
+        0
+      );
+
       const monthIndex = await getIndex(startMonth, monthMap);
       const dayIndex = await getIndex(startDay, dayMap);
-
-      console.log(monthIndex);
-      console.log(dayIndex);
 
       const userInput = {
         name: calName,
@@ -336,18 +332,7 @@ const Create = () => {
           />
         </form>
         <br></br>
-        <h4>Enter how many days are in a year</h4>
-        <form>
-          <input
-            value={daysInYear}
-            name="currentYear"
-            onChange={handleDayInYearChange}
-            type="year"
-            placeholder="Days In Year"
-            id="daysInYear"
-          />
-        </form>
-        <br></br>
+
         <button id="btn" type="button" onClick={handleGoBack}>
           Back
         </button>
