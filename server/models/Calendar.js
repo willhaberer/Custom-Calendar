@@ -18,6 +18,16 @@ const calendarSchema = new Schema({
     required: true,
     default: 1,
   },
+  dayIndex: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
+  monthIndex: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
 });
 
 // const Calendar = model("Calendar", calendarSchema);
