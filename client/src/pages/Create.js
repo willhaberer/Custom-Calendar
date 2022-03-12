@@ -82,7 +82,7 @@ const Create = () => {
   };
 
   const getIndex = async (x, xArray) => {
-    return x;
+    return xArray.indexOf(x);
   };
 
   const handleYearChange = (event) => {
@@ -196,8 +196,8 @@ const Create = () => {
       const calName = calendarName;
       const setYear = parseInt(currentYear);
       const setDayCount = parseInt(daysInYear);
-      const monthIndex = await getIndex(startMonth, monthArr);
-      const dayIndex = await getIndex(startDay, dayArr);
+      const monthIndex = await getIndex(startMonth, monthMap);
+      const dayIndex = await getIndex(startDay, dayMap);
 
       console.log(monthIndex);
       console.log(dayIndex);
