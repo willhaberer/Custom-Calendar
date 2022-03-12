@@ -10,7 +10,6 @@ const Create = () => {
   const [addCalendar] = useMutation(ADD_CALENDAR);
 
   const [currentYear, setCurrentYear] = useState(0);
-  const [daysInYear, setDaysInYear] = useState(1);
   const [calendarName, setCalendarName] = useState("Name");
   const [startMonth, setStartMonth] = useState("Month");
   const [startDay, setStartDay] = useState("Day");
