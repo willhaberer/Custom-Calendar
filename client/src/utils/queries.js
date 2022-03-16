@@ -8,7 +8,7 @@ export const GET_ME = gql`
       email
       calendarList {
         name
-        id
+        _id
         months
         days
         currentYear

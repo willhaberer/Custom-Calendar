@@ -7,10 +7,7 @@ const calendarSchema = new Schema(
       required: true,
       unique: true,
     },
-    id: {
-      type: Number,
-      required: true,
-    },
+
     days: [String],
     months: [String],
     monthDayCount: [Number],
