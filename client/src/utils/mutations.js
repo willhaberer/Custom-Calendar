@@ -57,6 +57,7 @@ export const ADD_CALENDAR = gql`
       email
       calendarList {
         name
+        id
         months
         days
         currentYear
