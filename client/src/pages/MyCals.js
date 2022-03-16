@@ -14,7 +14,7 @@ const MyCals = () => {
 
   const deleteCalendar = (event) => {
     event.preventDefault();
-    console.log("remove calendar");
+    console.log(event.target.value);
   };
 
   if (!userData?.username) {
@@ -32,8 +32,12 @@ const MyCals = () => {
       {userData.calendarList.map((calendar, c) => {
         return (
           <>
-            <h3>Calendar: {calendar.name}</h3>
-            <button id="deleteCalBt" onClick={deleteCalendar}>
+            <h3 id={c}>Calendar: {calendar.name}</h3>
+            <button
+              className="deleteCalBt"
+              onClick={deleteCalendar}
+              value={calendar.name}
+            >
               Delete
             </button>
           </>
