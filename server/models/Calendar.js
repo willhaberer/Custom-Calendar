@@ -5,6 +5,7 @@ const calendarSchema = new Schema(
     name: {
       type: String,
       required: true,
+      unique: true,
     },
     days: [String],
     months: [String],

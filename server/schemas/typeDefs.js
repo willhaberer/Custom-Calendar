@@ -47,6 +47,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     removeUser(userId: String!): User
     addCalendar(calendar: CalendarInput): User
+    removeCalendar(calendarName: String!): User
   }
 `;
 

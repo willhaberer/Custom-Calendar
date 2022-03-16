@@ -57,6 +57,17 @@ const resolvers = {
       }
       throw new AuthenticationError("Something went Wrong!");
     },
+
+    removeCalendar: async (parent, { calendarName }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { calendarList: { name: calendarName } } },
+          { new: true }
+        );
+        return updatedUser;
+      }
+    },
   },
 };
 
