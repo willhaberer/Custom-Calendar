@@ -21,14 +21,17 @@ const Navbar = () => {
         <Link id="homeLink" to="/">
           <h3 id="createLink">Home</h3>
         </Link>
-        <Link id="link" to="/login">
-          <h3 id="loginLink">Login</h3>
-        </Link>
         <Link id="link" to="/create">
           <h3 id="createLink">Create</h3>
         </Link>
+        <Link id="link" to="/mycals">
+          <h3 id="createLink">My Cals</h3>
+        </Link>
         <Link id="link" to="/profile">
           <h3 id="createLink">Profile</h3>
+        </Link>
+        <Link id="link" to="/login">
+          <h3 id="loginLink">Login</h3>
         </Link>
       </div>
     );
@@ -39,15 +42,18 @@ const Navbar = () => {
       <Link id="link" to="/">
         <h3 id="createLink">Home</h3>
       </Link>
-      <h3 id="logout" onClick={logoutUser}>
-        Logout
-      </h3>
       <Link id="link" to="/create">
         <h3 id="createLink">Create</h3>
+      </Link>
+      <Link id="link" to="/mycals">
+        <h3 id="createLink">My Cals</h3>
       </Link>
       <Link id="link" to="/profile">
         <h3 id="createLink">Profile</h3>
       </Link>
+      <h3 id="logout" onClick={logoutUser}>
+        Logout
+      </h3>
     </div>
   );
 };
