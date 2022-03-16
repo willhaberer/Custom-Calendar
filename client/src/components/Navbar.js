@@ -12,14 +12,15 @@ const Navbar = () => {
 
   const logoutUser = async (event) => {
     event.preventDefault();
-    console.log("logout clicked");
     Auth.logout();
   };
 
   if (!userData?.username) {
     return (
       <div id="navbar">
-        <Link id="link" style={{ textDecoration: "none" }} to="/"></Link>
+        <Link id="homeLink" to="/">
+          <h3 id="createLink">Home</h3>
+        </Link>
         <Link id="link" to="/login">
           <h3 id="loginLink">Login</h3>
         </Link>
@@ -35,17 +36,18 @@ const Navbar = () => {
 
   return (
     <div id="navbar">
-      <a href="/">
-        <h3 id="logout" onClick={logoutUser}>
-          Logout
-        </h3>
-        <Link id="link" to="/create">
-          <h3 id="createLink">Create</h3>
-        </Link>
-        <Link id="link" to="/profile">
-          <h3 id="createLink">Profile</h3>
-        </Link>
-      </a>
+      <Link id="link" to="/">
+        <h3 id="createLink">Home</h3>
+      </Link>
+      <h3 id="logout" onClick={logoutUser}>
+        Logout
+      </h3>
+      <Link id="link" to="/create">
+        <h3 id="createLink">Create</h3>
+      </Link>
+      <Link id="link" to="/profile">
+        <h3 id="createLink">Profile</h3>
+      </Link>
     </div>
   );
 };
