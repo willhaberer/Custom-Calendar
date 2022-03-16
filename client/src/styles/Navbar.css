@@ -16,3 +16,10 @@
   margin-left: 2rem;
   margin-right: 2rem;
 }
+
+#logout {
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
