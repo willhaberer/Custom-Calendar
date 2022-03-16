@@ -33,26 +33,22 @@ export const REMOVE_USER = gql`
   }
 `;
 
-// export const ADD_CALENDAR = gql`
-//   mutation addCalendar(
-//     $name: String!
-//     $days: [String]!
-//     $months: [String]!
-//     $currentYear: Int!
-//   ) {
-//     addCalendar(
-//       name: $name
-//       days: $days
-//       months: $months
-//       currentYear: $currentYear
-//     ) {
-//       name
-//       days
-//       months
-//       currentYear
-//     }
-//   }
-// `;
+export const REMOVE_CALENDAR = gql`
+  mutation removeCalendar($calendarName: String!) {
+    removeCalendar(name: $calendarName) {
+      username
+      email
+      calendarList {
+        name
+        months
+        days
+        currentYear
+        dayIndex
+        monthIndex
+      }
+    }
+  }
+`;
 
 export const ADD_CALENDAR = gql`
   mutation addCalendar($calendar: CalendarInput!) {
