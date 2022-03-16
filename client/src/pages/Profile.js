@@ -56,6 +56,9 @@ const Profile = () => {
     <div id="mainContainer">
       <h1>Profile</h1>
       <h1 id="welcome">Welcome Back {userData.username}!</h1>
+      {userData.calendarList.map((calendar, c) => {
+        return <h3>Calendar: {calendar.name}</h3>;
+      })}
       <button id="removeUser" onClick={handleRemoveUser}>
         Delete Your Account
       </button>
