@@ -212,6 +212,7 @@ const Create = () => {
         variables: { calendar: userInput },
       });
       console.log(data);
+      window.location.assign("/mycals");
     } catch (e) {
       console.error(e);
     }
