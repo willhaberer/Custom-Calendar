@@ -7,14 +7,30 @@ import "../styles/Profile.css";
 
 const MyCals = () => {
   const { data } = useQuery(GET_ME);
-  const [removeCalendar, { error }] = useMutation(REMOVE_CALENDAR);
+  const [removeCalendar] = useMutation(REMOVE_CALENDAR);
 
   const userData = data?.me || {};
   console.log(userData);
 
-  const deleteCalendar = (event) => {
+  const deleteCalendar = async (event) => {
     event.preventDefault();
-    console.log(event.target.value);
+
+    var areSure = window.confirm(
+      `Are you Sure you Want to Delete Calendar ${event.target.value}?`
+    );
+    if (areSure === true) {
+      try {
+        const calendarName = event.target.value;
+        const { data } = await removeCalendar({
+          variables: { calendarName },
+        });
+        console.log(data);
+        alert("Your Calendar has Been Deleted");
+        window.location.reload();
+      } catch (err) {
+        console.error(err);
+      }
+    }
   };
 
   if (!userData?.username) {
