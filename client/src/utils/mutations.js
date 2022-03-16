@@ -34,8 +34,8 @@ export const REMOVE_USER = gql`
 `;
 
 export const REMOVE_CALENDAR = gql`
-  mutation removeCalendar($calendarName: String!) {
-    removeCalendar(calendarName: $calendarName) {
+  mutation removeCalendar($calendarId: String!) {
+    removeCalendar(calendarId: $calendarId) {
       username
       email
       calendarList {

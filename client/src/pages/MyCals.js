@@ -14,15 +14,15 @@ const MyCals = () => {
 
   const deleteCalendar = async (event) => {
     event.preventDefault();
-
+    console.log(event.target);
     var areSure = window.confirm(
-      `Are you Sure you Want to Delete Calendar ${event.target.value}?`
+      `Are you Sure you Want to Delete Calendar ${event.target.name}?`
     );
     if (areSure === true) {
       try {
-        const calendarName = event.target.value;
+        const calendarId = event.target.value;
         const { data } = await removeCalendar({
-          variables: { calendarName },
+          variables: { calendarId },
         });
         console.log(data);
         alert("Your Calendar has Been Deleted");
@@ -52,7 +52,8 @@ const MyCals = () => {
             <button
               className="deleteCalBt"
               onClick={deleteCalendar}
-              value={calendar.name}
+              value={calendar._id}
+              name={calendar.name}
             >
               Delete
             </button>
